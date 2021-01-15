@@ -51,7 +51,7 @@ In short, each runner has his own cache located in an anonymous docker volume lo
 
 ## gitlab-ci configuration
 
-here is an example of a gitlab-ci which use a custom docker image to build an android project with gradle :
+Here is an example of a gitlab-ci which use a custom docker image to build an android project with gradle :
 ```yaml
 image: android:28
 stages:
