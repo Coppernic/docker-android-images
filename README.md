@@ -1,4 +1,4 @@
-# docker-android-sdk
+# docker-android-images
 
 Contains Dockerfiles to create docker images to build android projects.
 
