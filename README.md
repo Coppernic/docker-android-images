@@ -18,14 +18,16 @@ In your server where gitlab-runner and docker are installed, run :
 ```bash
 gitlab-runner register
 ```
-Then follow instructions. Don't forget to give a custom tag (for example "android", it will be used in gitlab-ci to specify the runner to use ). Specify docker as executor, with alpine as default image.
+Then follow instructions. Don't forget to give a custom tag (for example "android", it will be used in gitlab-ci to specify the runner to use). Specify docker as executor, with alpine as default image.
 
 Once your runner config is done, edit the file /etc/gitlab-runner/config.toml :
 ```bash
 vim /etc/gitlab-runner/config.toml
 ```
-Find the configuration of your runner, for example, if you set the name as "android-sdk", search for the line name = "android-sdk".
-Now, find the "volumes" line and edit it from :
+Find the configuration of your runner, for example, if you set the name as "android-sdk", search for the line : 
+name = "android-sdk".
+Now, find the "volumes" line and edit it
+from
 ```bash
 volumes = ["/cache"]
 ```
