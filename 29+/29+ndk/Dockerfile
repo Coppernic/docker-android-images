@@ -10,6 +10,7 @@ RUN apk -U update && apk -U add \
   git \
   wget \
   zip \
+  openssh-client \
   && wget https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub -O /etc/apk/keys/sgerrand.rsa.pub \
 	&& wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/${GLIBC_VERSION}/glibc-${GLIBC_VERSION}.apk -O /tmp/glibc.apk \
 	&& wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/${GLIBC_VERSION}/glibc-bin-${GLIBC_VERSION}.apk -O /tmp/glibc-bin.apk \
@@ -31,8 +32,8 @@ RUN mkdir temp \
   && mkdir -p ~/android/cmdline-tools/tools \
   && mv ~/temp/cmdline-tools/* ~/android/cmdline-tools/tools/ \
   && rm -rf ~/temp \
+  && mkdir .ssh \
 #creation of build-tools
   && yes | ~/android/cmdline-tools/tools/bin/sdkmanager --licenses
-
 
 ENTRYPOINT ~/android/cmdline-tools/tools/bin/sdkmanager --install "ndk;20.0.5594570" && /bin/ash

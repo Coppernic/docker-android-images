@@ -5,12 +5,12 @@ ARG GLIBC_VERSION="2.28-r0"
 ENV ANDROID_SDK_ROOT /home/alpine/android
 ENV ANDROID_HOME /home/alpine/android
 
-
 RUN apk -U update && apk -U add \
   openjdk8 \
   git \
   wget \
   zip \
+  openssh-client \
   && wget https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub -O /etc/apk/keys/sgerrand.rsa.pub \
 	&& wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/${GLIBC_VERSION}/glibc-${GLIBC_VERSION}.apk -O /tmp/glibc.apk \
 	&& wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/${GLIBC_VERSION}/glibc-bin-${GLIBC_VERSION}.apk -O /tmp/glibc-bin.apk \
@@ -32,5 +32,6 @@ RUN mkdir temp \
   && mkdir -p ~/android/cmdline-tools/tools \
   && mv ~/temp/cmdline-tools/* ~/android/cmdline-tools/tools/ \
   && rm -rf ~/temp \
+  && mkdir .ssh \
 #creation of build-tools
   && yes | ~/android/cmdline-tools/tools/bin/sdkmanager --licenses
